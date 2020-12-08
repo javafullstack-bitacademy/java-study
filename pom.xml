@@ -31,8 +31,6 @@
 	</build>
 				
 	<modules>
-		<module>ex11-12</module>
-		<module>ex11-13</module>
-		<module>ex11-16</module>
+	<module>parksystem</module>
 	</modules>
 </project>
