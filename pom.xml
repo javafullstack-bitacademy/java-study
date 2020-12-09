@@ -31,6 +31,7 @@
 	</build>
 				
 	<modules>
-	<module>parksystem</module>
+		<module>parksystem</module>
+		<module>practice01</module>
 	</modules>
 </project>
