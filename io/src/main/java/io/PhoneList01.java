@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.StringTokenizer;
 
 public class PhoneList01 {
 
@@ -24,7 +25,25 @@ public class PhoneList01 {
 			String line = null;
 					
 			while((line = br.readLine()) != null) {
-				System.out.println(line);
+				StringTokenizer st = new StringTokenizer(line, "\t ");
+				
+				int index = 0;
+				while(st.hasMoreElements()) {
+					String token = st.nextToken();
+					
+					if(index == 0) { // 이름
+						System.out.print(token + ":");
+					} else if(index == 1) { // 전화번호1
+						System.out.print(token + "-");
+					} else if(index == 2) { // 전화번호2
+						System.out.print(token + "-");
+					} else { // 전화번호3
+						System.out.print(token);
+					}
+					index++;
+				}
+				
+				System.out.println("");
 			}
 			
 			
