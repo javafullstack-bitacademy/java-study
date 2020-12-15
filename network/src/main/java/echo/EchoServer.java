@@ -33,7 +33,7 @@ public class EchoServer {
 			System.out.println("[server] connected by client[" + remoteHostAddress + ":" + remotePort + "]");
 			
 			try {
-				//4. IOStream 받아 오기
+				//4. IOStream 생성(받아오기)
 				BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
 				PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"), true);
 				
