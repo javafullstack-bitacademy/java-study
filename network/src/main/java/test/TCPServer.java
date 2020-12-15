@@ -7,6 +7,7 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class TCPServer {
 
@@ -40,7 +41,7 @@ public class TCPServer {
 					int readByteCount = is.read(buffer); // blocking
 					
 					if(readByteCount == -1){
-						// client가 소켓을 정상적으로 종료
+						// client가 소켓을 정상 종료
 						System.out.println("[server] closed by client");
 						break;
 					}
@@ -51,8 +52,9 @@ public class TCPServer {
 					//6. 데이터쓰기
 					os.write(data.getBytes("utf-8"));
 				}
-				
-				
+			} catch(SocketException e) {
+				// client가 비정상 종료
+				System.out.println("[server] suddenly closed by client");
 			} catch(IOException e) {
 				System.out.println("[server] error:" + e);
 			} finally {

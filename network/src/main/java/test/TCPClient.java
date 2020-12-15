@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class TCPClient {
 	private static final String SERVER_IP = "127.0.0.1";
@@ -34,7 +35,7 @@ public class TCPClient {
 			int readByteCount = is.read(buffer);
 			
 			if(readByteCount == -1) {
-				// server 정상종료
+				// server 정상 종료
 				System.out.println("[client] closed by server");
 				return;
 			}
@@ -42,6 +43,9 @@ public class TCPClient {
 			data = new String(buffer, 0, readByteCount, "UTF-8");
 			System.out.println("[clinet] received:" + data);
 			
+		} catch(SocketException e) {
+			// server 비정상 종료
+			System.out.println("[clinet] suddenly closed by server");
 		} catch (IOException e) {
 			System.out.println("[client] error:" + e);
 		} finally {
