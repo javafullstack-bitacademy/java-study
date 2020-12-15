@@ -1,28 +1,30 @@
-package test;
+package echo;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 
-public class TCPServer {
-
+public class EchoServer {
+	public static final int PORT = 7000;
+	
 	public static void main(String[] args) {
 		ServerSocket serverSocket = null;
-		
 		try {
 			//1. 서버소켓 생성
 			serverSocket = new ServerSocket();
 			
 			//2. 바인딩(binding): Socket Address(IP Address + Port)
-			serverSocket.bind(new InetSocketAddress("127.0.0.1", 6000));
+			serverSocket.bind(new InetSocketAddress("127.0.0.1", PORT));
 
 			//3. accept
-			Socket socket = serverSocket.accept();  // blocking
+			Socket socket = serverSocket.accept();
 			
 			InetSocketAddress remoteInetSocketAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
 			InetAddress remoteInetAddress = remoteInetSocketAddress.getAddress();
@@ -32,25 +34,23 @@ public class TCPServer {
 			
 			try {
 				//4. IOStream 받아 오기
-				InputStream is = socket.getInputStream();
-				OutputStream os = socket.getOutputStream();
+				BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
+				PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"), true);
 				
 				while(true) {
 					//5. 데이터 읽기
-					byte[] buffer = new byte[256];
-					int readByteCount = is.read(buffer); // blocking
+					String data = br.readLine();
 					
-					if(readByteCount == -1){
+					if(data == null){
 						// client가 소켓을 정상 종료
 						System.out.println("[server] closed by client");
 						break;
 					}
 					
-					String data = new String(buffer, 0, readByteCount, "UTF-8");
 					System.out.println("[server] received:" + data);
 					
 					//6. 데이터쓰기
-					os.write(data.getBytes("utf-8"));
+					pw.println(data);
 				}
 			} catch(SocketException e) {
 				// client가 비정상 종료
