@@ -38,6 +38,8 @@ libaio
 5-2. 설정파일 /etc로 옮긴다.
 # cp -R /usr/local/javafullstack/mariadb/etc/my.cnf.d /etc
 
+5-3. 기본 데이터베이스 생성
+/usr/local/javafullstack/mariadb/scripts/mysql_install_db --user=mysql --basedir=/usr/local/javafullstack/mariadb --defaults-file=/usr/local/javafullstack/mariadb/etc/my.cnf --datadir=/usr/local/javafullstack/mariadb/data
 
  
 
