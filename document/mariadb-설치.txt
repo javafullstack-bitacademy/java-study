@@ -58,7 +58,7 @@ libaio
 6. 서비스 등록
 #vi /etc/systemd/system/mariadb.service
 
-
+===========================================================
 [Unit]
 Description=MariaDB Database Server
 After=syslog.target
@@ -87,7 +87,7 @@ TimeoutSec=300
 
 [Install]
 WantedBy=multi-user.target
-
+===========================================================
 
 # systemctl enable mariadb
 # systemctl status mariadb
@@ -100,16 +100,28 @@ WantedBy=multi-user.target
 7. /usr/local/javafullstack/mariadb/bin 디레토리를 PATH 환경변수 설정
 # vi /etc/profile
 PATH 변수에 /usr/local/javafullstack/mariadb/bin 추가
+===========================================================
+
+# mariadb
+export PATH=$PATH:/usr/local/javafullstack/mariadb/bin
+
+===========================================================
 
 
-8.
-webdb 생성
-
+8. webdb 데이터베이스 생성
 create database webdb;
+
+9. 사용자 생성
 create user 'webdb'@'localhost' identified by 'webdb';
+create user 'webdb'@'192.168.1.%' identified by 'webdb';
+
+10. 권한부여
 grant all privileges on webdb.* to 'webdb'@'localhost';
+grant all privileges on webdb.* to 'webdb'@'192.168.1.%';
 
-
+flush privileges;
+flush privileges;
+flush privileges;
 
 
 
