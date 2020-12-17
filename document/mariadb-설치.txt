@@ -55,14 +55,7 @@ libaio
 5-7. 접속하기
 # /usr/local/javafullstack/mariadb/bin/mysql -p
 
-
-
-
-
-
-
-서비스 등록
-
+6. 서비스 등록
 /etc/systemd/system/mariadb.service
 
 
