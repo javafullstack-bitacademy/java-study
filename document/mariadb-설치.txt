@@ -102,4 +102,17 @@ WantedBy=multi-user.target
 PATH 변수에 /usr/local/javafullstack/mariadb/bin 추가
 
 
+8.
+webdb 생성
+
+create database webdb;
+create user 'webdb'@'localhost' identified by 'webdb';
+grant all privileges on webdb.* to 'webdb'@'localhost';
+
+
+
+
+
+
+
 
