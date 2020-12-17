@@ -45,6 +45,9 @@ libaio
 # mkdir /usr/local/javafullstack/mariadb/tmp
 # chown mysql:mysql /usr/local/javafullstack/mariadb/tmp 
 
+5-5. 서버 실행해보기
+# /usr/local/javafullstack/mariadb/bin/msqyld_safe &
+
 
 
 
