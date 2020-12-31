@@ -30,7 +30,7 @@ public class SelectTest {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
 			// 2. 연결하기
-			String url = "jdbc:mysql://192.168.1.12:3307/webdb?characterEncoding=utf8";
+			String url = "jdbc:mysql://192.168.1.212:3307/webdb?characterEncoding=utf8";
 			conn = DriverManager.getConnection(url, "webdb", "webdb");
 			
 			// 3. SQL 준비
