@@ -1,4 +1,4 @@
-package prob6;
+package prob06;
 
 public class Employee {
 

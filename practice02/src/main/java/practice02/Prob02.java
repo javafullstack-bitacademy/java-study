@@ -3,28 +3,34 @@ package practice02;
 import java.util.Scanner;
 
 public class Prob02 {
-	
+	private static final int COUNT_GOODS = 3;
+
 	public static void main(String[] args) {
-		final int GOODS_COUNT = 1;
-		
-		Goods[] goods = new Goods[GOODS_COUNT];
-				
+
 		Scanner scanner = new Scanner(System.in);
-		for(int i = 0; i < GOODS_COUNT; i++) {
-			String info = scanner.nextLine();
-			
-			String[] infos = info.split(" ");
-			
-			String name = infos[0];
-			int price = Integer.parseInt(infos[1]);
-			int stockCount = Integer.parseInt(infos[1]);
-			
+
+		Goods[] goods = new Goods[COUNT_GOODS];
+
+		for (int i = 0; i < COUNT_GOODS; i++) {
+			String line = scanner.nextLine();
+
+			String[] tokens = line.split(" ");
+			String name = tokens[0];
+			int price = Integer.parseInt(tokens[1]);
+			int countStock = Integer.parseInt(tokens[2]);
+
+			Goods g = new Goods();
+			g.setName(name);
+			g.setPrice(price);
+			g.setCountStock(countStock);
+
+			goods[i] = g;
 		}
 
-		
-		for(int i = 0; i < GOODS_COUNT; i++) {
-		}	
-		
+		for (Goods g : goods) {
+			System.out.println(g.getName() + "(가격:" + g.getPrice() + "원)이 " + g.getCountStock() + "개 입고 되었습니다.");
+		}
+
 		scanner.close();
 	}
 }

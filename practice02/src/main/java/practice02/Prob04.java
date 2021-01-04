@@ -3,14 +3,13 @@ package practice02;
 public class Prob04 {
 
 	public static void main(String[] args) {
-		CurrencyConverter.setRate(1084.52);
+		//  환율을 세팅 합니다.
+		CurrencyConverter.setRate(1197.0);
 		
-		double w1 = 1000000;
-		double d1 = CurrencyConverter.toDollar(w1);
-		System.out.println("");
+		double dollar = CurrencyConverter.toDollar( 1000000. );
+		System.out.println( "백만원은 " + dollar + "달러 입니다" );
 		
-		double d2 = 100;
-		double w2 = CurrencyConverter.toKWR(d2);
-		System.out.println("");
+		double krw = CurrencyConverter.toKRW( 100. );
+		System.out.println( "백달러는 " + krw + "원 입니다" );
 	}
 }

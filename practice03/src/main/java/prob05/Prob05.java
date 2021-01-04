@@ -1,6 +1,6 @@
-package prob5;
+package prob05;
 
-public class Prob5 {
+public class Prob05 {
 	public static void main(String args[]){
 		Base base = new MyBase();
 		base.service("낮");

@@ -1,4 +1,4 @@
-package prob1;
+package prob01;
 
 public class MainApp {
 	

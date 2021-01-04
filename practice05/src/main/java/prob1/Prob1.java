@@ -4,16 +4,20 @@ import java.util.Scanner;
 
 public class Prob1 {
 	public static void main(String[] args) {
-		
-		Scanner scanner = new Scanner( System.in );
-		System.out.print( "¹®ÀÚ¿­À» ÀÔ·ÂÇÏ¼¼¿ä:" );
-		
-		String s = scanner.next();
-		
-		/*  ÀÌ°÷¿¡ ÇÁ·Î±×·¥À» ¿Ï¼ºÇÏ½Ê½Ã¿À. */
-		for(int i = 0 ; i < s.length(); i++) {
-//			for(int j = 0; j <)
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.print("ë¬¸ìžì—´ì„ ìž…ë ¥í•˜ì„¸ìš” : ");
+		String text = scanner.nextLine();
+
+		int length = text.length();
+		for( int i = 0; i < length; i++ ) {
+			for( int j = 0; j <= i; j++ ) {
+				System.out.print( text.charAt( j ) );
+			}
 			
+			System.out.println( "" );
 		}
+		
+		scanner.close();
 	}
 }
